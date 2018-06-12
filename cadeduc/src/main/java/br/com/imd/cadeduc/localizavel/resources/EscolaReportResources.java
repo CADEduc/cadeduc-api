@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.imd.cadeduc.localizavel.service.EscolaService;
 import br.com.imd.cadwork.core.service.exception.GenericServiceException;
+import springfox.documentation.annotations.ApiIgnore;
 
+@ApiIgnore
 @Controller
 @RequestMapping("/reports")
 public class EscolaReportResources {

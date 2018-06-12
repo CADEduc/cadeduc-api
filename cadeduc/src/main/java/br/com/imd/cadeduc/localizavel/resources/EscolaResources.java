@@ -40,7 +40,7 @@ public class EscolaResources {
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<String> salvar(@Valid @RequestBody Localizavel escola, BindingResult resultado) throws GenericServiceException {
 
-		escolaService.salvar((Escola) escola, resultado);
+		escolaService.salvar(escola, resultado);
 
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(escola.getId()).toUri();
 
