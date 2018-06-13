@@ -38,7 +38,7 @@ public class EscolaResources {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<String> salvar(@Valid @RequestBody Localizavel escola, BindingResult resultado) throws GenericServiceException {
+	public ResponseEntity<String> salvar(@Valid @RequestBody Escola escola, BindingResult resultado) throws GenericServiceException {
 
 		escolaService.salvar(escola, resultado);
 
