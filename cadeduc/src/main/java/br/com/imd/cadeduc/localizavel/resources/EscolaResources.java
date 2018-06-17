@@ -2,6 +2,7 @@ package br.com.imd.cadeduc.localizavel.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -20,7 +21,10 @@ import br.com.imd.cadeduc.localizavel.domain.Escola;
 import br.com.imd.cadeduc.localizavel.service.EscolaService;
 import br.com.imd.cadwork.core.localizavel.model.Localizavel;
 import br.com.imd.cadwork.core.service.exception.GenericServiceException;
+import br.com.imd.cadwork.util.exception.ConvertLocalizavelException;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(value = "/escolas", produces = "application/json")
@@ -30,10 +34,9 @@ public class EscolaResources {
 	@Autowired
 	EscolaService escolaService;
 
-	@SuppressWarnings("unchecked")
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Localizavel> listar() throws GenericServiceException {
-		return (List<Localizavel>)((Object)escolaService.listar());
+		return escolaService.listar();
 
 	}
 	
@@ -47,10 +50,16 @@ public class EscolaResources {
 		return ResponseEntity.created(uri).build();
 	}
 
-	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public Optional<Localizavel> buscar(@PathVariable("id") Long id) throws GenericServiceException {
-		return (Optional<Localizavel>)((Object)escolaService.buscar(id));
+		return escolaService.buscar(id);
 	}
 
+	@RequestMapping(value = "/endereco/{lat:.+}/{lng:.+}", method = RequestMethod.GET)
+	@ApiOperation(value = "Escolas Próximas")
+	public List<Map<String, Object>> getEscolasProximas(@PathVariable("lat") String lat, @PathVariable("lng") String lng) 
+			throws GenericServiceException, NumberFormatException, ConvertLocalizavelException {
+		
+		return escolaService.buscarEscolasProximas(Double.valueOf(lat),Double.valueOf(lng));
+	}
 }

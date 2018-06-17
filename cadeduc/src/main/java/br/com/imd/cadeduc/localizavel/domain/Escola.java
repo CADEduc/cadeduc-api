@@ -1,13 +1,7 @@
 package br.com.imd.cadeduc.localizavel.domain;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import br.com.imd.cadwork.core.localizavel.model.Localizavel;
 import io.swagger.annotations.ApiModel;
@@ -27,23 +21,9 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 public class Escola extends Localizavel{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id_escola")
-	@ApiModelProperty(hidden = true, notes = "ID gerado automaticamente pela base de dados")
-	private Long id;
-
-	@NotBlank(message = "Campo em branco")
-	@NotNull(message = "Campo nulo")
-	@ApiModelProperty(notes = "Nome da instituição", required = true)
-	private String nome;
-
 	@ApiModelProperty(notes = "Telefone da instituição")
 	private String telefone;
 
-	
-
-	
 	@Override
 	protected boolean validaLocalizavel() {
 		// TODO Auto-generated method stub

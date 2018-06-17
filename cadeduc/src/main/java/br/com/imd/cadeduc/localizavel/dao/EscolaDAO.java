@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import br.com.imd.cadwork.core.localizavel.dao.LocalizavelDAO;
 import br.com.imd.cadwork.core.localizavel.model.Localizavel;
-import br.com.imd.cadwork.core.localizavel.model.LocalizavelDAO;
 
 @Repository
 public interface EscolaDAO extends LocalizavelDAO {
