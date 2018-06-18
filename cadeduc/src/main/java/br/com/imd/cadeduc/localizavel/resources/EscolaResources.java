@@ -23,7 +23,6 @@ import br.com.imd.cadwork.core.localizavel.model.Localizavel;
 import br.com.imd.cadwork.core.service.exception.GenericServiceException;
 import br.com.imd.cadwork.util.exception.ConvertLocalizavelException;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
