@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 
 import br.com.imd.cadeduc.localizavel.dao.EscolaDAO;
 import br.com.imd.cadwork.core.dao.GenericDAO;
+import br.com.imd.cadwork.core.dao.GenericDomainException;
 import br.com.imd.cadwork.core.localizavel.model.Localizavel;
 import br.com.imd.cadwork.core.service.GoogleService;
 import br.com.imd.cadwork.core.service.LocalizavelService;
@@ -27,12 +28,25 @@ public class EscolaService extends LocalizavelService {
 
 	@Override
 	public void salvar(Localizavel escola, BindingResult resultado) throws GenericServiceException {
+		escola.validaLocalizavel();
 		super.salvar(escola, resultado);
 	}
 
 	@Override
 	public Optional<Localizavel> buscar(Long id) throws GenericServiceException {
-		return super.buscar(id);
+		return super.buscar(id).filter(localizavel ->{
+			localizavel.getCriterioLocalizacao()
+			.stream()
+			.filter(criterio -> {
+				try {
+					criterio.validaCriterios();
+				} catch (GenericDomainException e) {				
+					e.printStackTrace();
+				}
+				return true;
+			});
+			return true;
+		});
 	}
 
 	@Autowired

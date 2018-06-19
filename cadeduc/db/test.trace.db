@@ -177,3 +177,26 @@ alter table escola.escola add constraint FK514c2i5v2gevj61b7qq16t1ku foreign key
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+2018-06-19 00:04:33 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM CRITERIO.ETAPA_ENSINO 
+
+INSERT TABLE[*] CRITERIO.ETAPA_ENSINO(ID,NOME,TIPO_ETAPA_ENSINO,VAGAS_DISPONIVEIS)VALUES(1,'1ª Serie', 'Ensino Medio',10) "; SQL statement:
+SELECT * FROM CRITERIO.ETAPA_ENSINO 
+
+insert table criterio.etapa_ensino(id,nome,tipo_etapa_ensino,vagas_disponiveis)values(1,'1ª Serie', 'Ensino Medio',10) [42000-197]
+2018-06-19 00:04:44 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "INSERT TABLE[*] CRITERIO.ETAPA_ENSINO(ID,NOME,TIPO_ETAPA_ENSINO,VAGAS_DISPONIVEIS)VALUES(1,'1ª Serie', 'Ensino Medio',10) "; expected "INTO"; SQL statement:
+insert table criterio.etapa_ensino(id,nome,tipo_etapa_ensino,vagas_disponiveis)values(1,'1ª Serie', 'Ensino Medio',10) [42001-197]
+2018-06-19 00:04:58 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+insert into table criterio.etapa_ensino(id,nome,tipo_etapa_ensino,vagas_disponiveis)values(1,'1ª Serie', 'Ensino Medio',10) [42102-197]
+2018-06-19 00:06:33 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+--insert into criterio.etapa_ensino(id,nome,tipo_etapa_ensino,vagas_disponiveis)values(1,'1ª Serie', 'Ensino Medio',10);
+update table  CRITERIO.ETAPA_ENSINO
+set tipo_etapa_ensino = 2 [42102-197]
+2018-06-19 00:06:39 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+--insert into criterio.etapa_ensino(id,nome,tipo_etapa_ensino,vagas_disponiveis)values(1,'1ª Serie', 'Ensino Medio',10);
+update table  CRITERIO.ETAPA_ENSINO
+set tipo_etapa_ensino = 2 [42102-197]

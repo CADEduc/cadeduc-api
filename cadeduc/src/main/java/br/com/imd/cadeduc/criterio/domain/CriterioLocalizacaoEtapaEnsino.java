@@ -4,12 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import br.com.imd.cadeduc.criterio.exception.CriterioException;
 import br.com.imd.cadwork.core.dao.GenericDomainException;
 import br.com.imd.cadwork.core.localizavel.model.CriterioLocalizacao;
 import io.swagger.annotations.ApiModel;
@@ -27,18 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 @Table(name = "etapa_ensino", schema = "criterio")
 @ApiModel
 public class CriterioLocalizacaoEtapaEnsino extends CriterioLocalizacao{
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id_etapa_ensino")
-	@ApiModelProperty(hidden = true, notes = "ID gerado automaticamente pela base de dados")
-	private Long id;
-
-	@NotNull
-	@ApiModelProperty(notes = "Nome da Etapa de Ensino", required = true)
-	private String nome;
-
-	@NotNull
+	
 	@Column(name = "vagas_disponiveis")
 	@ApiModelProperty(notes = "Quantidade de vagas disponíveis", required = true)
 	private int vagasDisponiveis;
@@ -48,52 +35,7 @@ public class CriterioLocalizacaoEtapaEnsino extends CriterioLocalizacao{
 	@Enumerated(EnumType.STRING)
 	@ApiModelProperty(notes = "Tipo da etapa de ensino", required = true)
 	private TipoEtapaEnsinoEnum tipoEtapaEnsino;
-	
-	public CriterioLocalizacaoEtapaEnsino() {
-		id = new Long(0);
-	}
 
-	/**
-	 * Método para retorno do id de uma instância de Etapa de Ensino
-	 * 
-	 * @return Long - Valor do id
-	 */
-
-	public Long getId() {
-		return id;
-	}
-
-	/**
-	 * Altera o valor do id de uma instância de Etapa de Ensino
-	 * 
-	 * @param id
-	 *            Long - Novo valor do id
-	 */
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	/**
-	 * Retorna o nome da etapa de ensino
-	 * 
-	 * @return String - Nome da etapa de ensino
-	 */
-
-	public String getNome() {
-		return nome;
-	}
-
-	/**
-	 * Altera o nome da etapa de ensino
-	 * 
-	 * @param nome
-	 *            String - Novo nome da etapa de ensino
-	 */
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 
 	/**
 	 * Retorna o número de vagas disponíveis
@@ -137,8 +79,10 @@ public class CriterioLocalizacaoEtapaEnsino extends CriterioLocalizacao{
 	}
 
 	@Override
-	protected void validaCriterios() throws GenericDomainException {
-		// TODO Auto-generated method stub
+	public void validaCriterios() throws GenericDomainException {
+		if(vagasDisponiveis==0) {
+			throw new CriterioException("Quantidade de vagas insuficiente");
+		}
 		
 	}
 

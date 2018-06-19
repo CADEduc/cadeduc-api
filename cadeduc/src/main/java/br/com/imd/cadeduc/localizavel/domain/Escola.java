@@ -25,11 +25,14 @@ public class Escola extends Localizavel{
 	private String telefone;
 
 	@Override
-	protected boolean validaLocalizavel() {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean validaLocalizavel() {
+		return google.validaExistencia(endereco.getLatitude(),
+									   endereco.getLongitude(),									 
+									   endereco.getCep(),
+									   "escola");
+		
 	}
-	
+
 	public Escola() {
 		id = new Long(0);
 	}
