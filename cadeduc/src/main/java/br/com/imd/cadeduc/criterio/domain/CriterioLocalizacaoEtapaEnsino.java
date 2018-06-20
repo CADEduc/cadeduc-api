@@ -7,8 +7,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import br.com.imd.cadeduc.criterio.exception.CriterioException;
 import br.com.imd.cadwork.core.dao.GenericDomainException;
+import br.com.imd.cadwork.core.localizavel.exception.CriterioException;
 import br.com.imd.cadwork.core.localizavel.model.CriterioLocalizacao;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
