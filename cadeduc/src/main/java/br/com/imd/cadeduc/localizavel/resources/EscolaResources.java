@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,7 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping(value = "/escolas", produces = "application/json")
 @Api(tags = "Escolas", description = "Operações pertinentes a escolas")
+@CrossOrigin(origins="http://localhost:4200", maxAge=3600)
 public class EscolaResources {
 
 	@Autowired
